@@ -24,13 +24,13 @@ class Whois
 	
 	private function request(string $whois, string $domain): void
 	{
-		if($fp = fsockopen($whois, 43))
+		if($handle = fsockopen($whois, 43))
 		{
-			fputs($fp, $domain."\r\n");
+			fputs($handle, $domain."\r\n");
 			
-			$this->data = stream_get_contents($fp);
+			$this->data = stream_get_contents($handle);
 			
-			fclose($fp);
+			fclose($handle);
 		}
 	}
 	
