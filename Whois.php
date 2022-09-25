@@ -6,10 +6,10 @@ class Whois
 	
 	private $whois = # https://www.iana.org/domains/root/db #
 	[
-		'com' => 'whois.verisign-grs.com',
 		'fr' => 'whois.nic.fr',
 		'io' => 'whois.nic.io',
-		'pf' => 'whois.registry.pf'
+		'pf' => 'whois.registry.pf',
+		'com' => 'whois.verisign-grs.com'
 	];
 	
 	public function __construct(string $domain)
@@ -58,7 +58,7 @@ class Whois
 			'not been registered',
 		];
 		
-		preg_match('#('.implode('|', $patterns).')#i', $this->response, $match);
+		preg_match('#('.implode('|', $patterns).')#i', $this->data, $match);
 		
 		return isset($match[1]);
 	}
